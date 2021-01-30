@@ -1,0 +1,74 @@
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body {
+    box-sizing: inherit;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 65rem;
+    margin: 0 auto;
+}
+
+.button {
+    font-size: .8rem;
+    font-family: $font-family;
+    font-weight: 400;
+    display: inline-block;
+    text-decoration: none;
+    color: $white;
+    padding: .8rem 2rem;
+    background: linear-gradient(to right, $limeGreen, $brightCyan);
+    border-radius: 2rem;
+
+    &:hover {
+        background: #84dac6;
+    }
+}
+
+.heading {
+    text-align: center;
+
+    @include mediaQuery(tablet) {
+        text-align: left;
+    }
+
+    &__title {
+        @include headingText();
+        font-size: 2rem;
+    }
+
+    &__subtext {
+        @include bodyText(sm);
+        width: Min(36rem, 100%);
+        margin: 1rem auto;
+
+        @include mediaQuery(tablet) {
+            margin: 1rem 0;
+            font-size: 1rem;
+        }
+    }
+}
+
+.grid {
+    display: grid;
+
+    &--two-col {
+        align-items: center;
+
+        @include mediaQuery(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &--four-col {
+        grid-template-columns: repeat(auto-fit, minmax(14.375rem, 1fr));
+        grid-gap: 2rem;
+        margin-top: 4rem;
+    }
+}

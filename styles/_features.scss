@@ -1,0 +1,28 @@
+.features {
+    padding: 4rem 2rem;
+    background-color: $lightGrayishBlue;
+
+    @include mediaQuery(tablet) {
+        padding: 4rem 3rem;
+    }
+
+    .card {
+        text-align: center;
+
+        @include mediaQuery(tablet) {
+            text-align: left;
+        }
+
+        &__title {
+            @include headingText();
+
+            @include mediaQuery(tablet) {
+                font-size: 1.3rem;
+            }
+        }
+
+        &__desc {
+            @include bodyText(sm);
+        }
+    }
+}

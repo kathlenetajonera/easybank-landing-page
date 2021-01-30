@@ -1,0 +1,54 @@
+.articles {
+    padding: 4rem 2rem;
+    background-color: $veryLightGray;
+
+    @include mediaQuery(tablet) {
+        padding: 4rem 3rem;
+    }
+
+    .article {
+        &__image {
+            display: block;
+            width: 100%;
+            border-radius: .5rem .5rem 0 0;
+        } 
+
+        &__text {
+            padding: 1rem;
+            background-color: $white;
+            border-radius: 0 0 .5rem .5rem;
+        }
+
+        &__author {
+            @include bodyText(xxs);
+            margin: 0;
+        }
+
+        &__title {
+            @include headingText();
+            margin: 1rem 0;
+
+            @include mediaQuery(tablet) {
+                font-size: 1rem;
+            }
+        }
+
+        &__link {
+            text-decoration: none;
+            color: $darkBlue;
+
+            &:hover {
+                color: $hoverColor;
+            }
+        }
+
+        &__snippet {
+            @include bodyText(xs);
+            line-height: 1.2rem;
+
+            @include mediaQuery(desktop-sm) {
+                font-size: .75rem;
+            }
+        }
+    }
+}

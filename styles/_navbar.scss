@@ -1,0 +1,154 @@
+.navbar {
+    padding: 1.5rem;
+    background-color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    $self: &;
+    z-index: 999;
+
+    &__logo {
+        display: block;
+    }
+
+    &__navicon {
+        cursor: pointer;
+    }
+
+    &__burger {
+        display: block;
+        width: 1.125rem;
+        height: 0.125rem;
+        background: $grayishBlue;
+        margin-bottom: 0.18rem;
+        transition: .2s ease;
+        transform-origin: 2px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__mobile-menu {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-180%, 110%);
+        z-index: 2;
+        width: 90%;
+        transition: .2s ease-in-out;
+    }
+
+    &__mobile-item {
+        @include reset-list();
+        text-align: center;
+        background-color: $white;
+        border-radius: .5rem;
+        padding: 1rem 0;
+    }
+
+    &__mobile-list {
+        padding: .5rem 0;
+    }
+
+    &__mobile-link {
+        @include linkText(md, dark-Blue);
+
+        &:hover {
+            color: $hoverColor;
+        }
+    }
+
+    &--active {
+        #{ $self }__burger {
+            &:first-child {
+                transform: rotate(45deg);
+            }
+    
+            &:nth-child(2) {
+                opacity: 0;
+            }
+    
+            &:last-child {
+                transform: rotate(-45deg);
+            }
+        }
+
+        #{ $self }__mobile-menu {
+            transform: translate(-50%, 110%);
+        }
+    }
+
+    &__desktop-menu {
+        display: none;
+    }
+
+    &__button {
+        display: none;
+    }
+
+    //desktop navbar
+    @include mediaQuery(tablet) {
+        padding: 0 3rem;
+
+        &__navicon, &__mobile-menu {
+            display: none;
+        }
+
+        &__button, &__desktop-menu {
+            display: block;
+        }
+
+        &__desktop-item {
+            @include reset-list();
+            display: flex;
+            align-items: center;
+        }
+
+        &__desktop-list {
+            padding: 1.5rem .5rem;
+            position: relative;
+        }
+
+        &__desktop-link {
+            @include linkText(sm, grayish-Blue);
+
+            &:hover {
+                color: $darkBlue;
+
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 80%;
+                    height: 0.25rem;
+                    background: linear-gradient(to right, $limeGreen, $brightCyan);
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
+}
+
+.overlay {
+    opacity: 0;
+    transition: .2s ease-in-out;
+
+    &--active {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $darkBlue;
+        opacity: .5;
+        z-index: 2;
+    }
+
+    @include mediaQuery(tablet) {
+        display: none;
+    }
+}

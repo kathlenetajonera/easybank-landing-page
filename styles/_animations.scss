@@ -1,0 +1,9 @@
+@keyframes slide-left {
+    0% {
+        transform: translate(-180%, 110%);
+    }
+
+    100% {
+        transform: translate(-50%, 110%);
+    }
+}

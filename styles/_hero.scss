@@ -1,0 +1,102 @@
+.hero {
+    background-color: $veryLightGray;
+
+    &__text {
+        padding: 0 1.5rem 4rem;
+        text-align: center;
+        order: 1;
+
+        @include mediaQuery(tablet) {
+            order: 0;
+            text-align: left;
+            padding: 0 1rem 0 3rem;
+        }
+
+        @include mediaQuery(desktop-md) {
+            padding: 0;
+        }
+    }
+
+    &__title {
+        @include headingText();
+        font-size: 2.5rem;
+
+        @include mediaQuery(tablet) {
+            width: Min(28.5rem, 100%);
+            margin: 1rem 0;
+        }
+
+        @include mediaQuery(desktop-sm) {
+            font-size: 3rem;
+        }
+    }
+
+    &__subtext {
+        @include bodyText(sm);
+        margin-bottom: 2rem;
+
+        @include mediaQuery(tablet) {
+            width: Min(26.125rem, 100%);
+            margin: 1rem 0;
+        }
+
+        @include mediaQuery(desktop-sm) {
+            font-size: 1rem;
+        }
+    }
+
+    &__image {
+        min-height: 17.5rem;
+        background-image: url("/images/bg-intro-mobile.svg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+
+        @include mediaQuery(tablet) {
+            // background-image: url("/images/bg-intro-desktop.svg");
+            // background-position: left 55%;
+            // background-size: 180%;
+            min-height: 90vh;
+            background-image: none;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 150%;
+                height: 100%;
+                background-image: url("/images/bg-intro-desktop.svg");
+                background-size: 170%;
+                background-repeat: no-repeat;
+                background-position: left 50%;
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url("/images/image-mockups.png");
+            background-size: 92%;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            z-index: 1;
+
+            @include mediaQuery(tablet) {
+                height: 120%;
+                background-size: cover;
+                background-position: left bottom;
+            }
+
+            @include mediaQuery(desktop-sm) {
+                right: -25%;
+            }
+
+            @include mediaQuery(desktop-md) {
+                background-size: 115%;
+                right: -40%;
+            }
+        }
+    }
+}
